@@ -3,6 +3,7 @@
 #Антон Попов 2022: a.popov.fizteh@gmail.com
 
 import enum
+from pathlib import Path
 import random
 import math
 import numpy as np
@@ -159,6 +160,10 @@ def save_config(runs, top_photons, side_photons, bottom_photons, absorbed_photon
         config.write(configfile)
 
 def save_data(data_np):
+    
+    #make folder for data save if it does not exist
+    Path('modeling results/').mkdir(parents=True, exist_ok=True)
+
     if params['np distribution'] == 'none':
         filename_p2 = '_noNPs'
     elif params['np distribution'] == 'sphere':
